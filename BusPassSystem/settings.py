@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'BusPassSystem.wsgi.application'
 # DATABASES = {
     # 'default': {
         # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'barcode_db',
+        # 'NAME': 'bus_db',
         # 'USER': 'root',
         # 'PASSWORD': '',
         # 'HOST': 'localhost',
