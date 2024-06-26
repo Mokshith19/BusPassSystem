@@ -61,6 +61,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, "templates")],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -103,6 +104,16 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+#
+##
+# Internationalization
+# used to redirect the account login page to show profile of page
+##
+#
+
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/buspass/profile/'
 
 # Language and timezone settings
 LANGUAGE_CODE = 'en-us'

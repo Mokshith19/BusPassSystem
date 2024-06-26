@@ -20,14 +20,18 @@ def register(request):
             return redirect('profile')
     else:
         form = RegistrationForm()
-    return render(request, 'myapp/register.html', {'form': form})
+    return render(request, 'buspass/register.html', {'form': form})
 
 # View for displaying the user's profile
 @login_required
 def profile(request):
-    passenger = request.user.passenger_profile
-    passes = passenger.passes.all()
-    return render(request, 'myapp/profile.html', {'passenger': passenger, 'passes': passes})
+    try:
+        passenger = request.user.passenger_profile
+        passes = passenger.passes.all()
+        return render(request, 'buspass/profile.html', {'passenger': passenger, 'passes': passes})
+    except Passenger.DoesNotExist:
+        # Handle case where the user does not have a Passenger profile
+        return render(request, 'buspass/profile.html', {'passenger': None, 'passes': None})
 
 # View for adding a new bus pass
 @login_required
@@ -41,4 +45,4 @@ def add_pass(request):
             return redirect('profile')
     else:
         form = AddPassForm()
-    return render(request, 'myapp/add_pass.html', {'form': form})
+    return render(request, 'buspass/add_pass.html', {'form': form})

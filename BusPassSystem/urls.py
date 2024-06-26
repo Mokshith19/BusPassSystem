@@ -22,9 +22,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("index/", include("myapp.urls")),
     path('buspass/', include('myapp.urls')),
-    path('accounts/', include('django.contrib.auth.urls')), 
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
+# /accounts/login/,
+# /accounts/logout/, 
+# /accounts/password_change/
 
 # from django.contrib import admin
 # from django.urls import path, include
