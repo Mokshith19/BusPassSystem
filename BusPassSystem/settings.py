@@ -11,18 +11,15 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Define the base directory of the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
+# Security key for the project
 SECRET_KEY = 'django-insecure-8#+&2)6uc=3_^&02_%5n1#j!q4gv51n0lendox1ljztmfs=*om'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# Enable debugging mode during development
 DEBUG = True
 
 #
@@ -30,10 +27,11 @@ DEBUG = True
 #ALLOWED_HOSTS = ['10.0.7.26', 'localhost', '127.0.0.1']
 ##
 #
+
+# Allowed hosts configuration (empty for development)
 ALLOWED_HOSTS = []
 
-# Application definition
-
+# Installed applications for the project
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,6 +42,7 @@ INSTALLED_APPS = [
     'myapp',
 ]
 
+# Middleware configurations
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -54,10 +53,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# URL configuration for the project
 ROOT_URLCONF = 'BusPassSystem.urls'
 
-import os
-
+# Template settings
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -74,33 +73,22 @@ TEMPLATES = [
     },
 ]
 
+# WSGI application configuration
 WSGI_APPLICATION = 'BusPassSystem.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-# DATABASES = {
-    # 'default': {
-        # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'bus_db',
-        # 'USER': 'root',
-        # 'PASSWORD': '',
-        # 'HOST': 'localhost',
-        # 'PORT': '3306'
-    # }
-# }
+# Database configuration using MySQL
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'bus_db',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306'
     }
 }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
-
+# Password validation configurations
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -116,25 +104,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/5.0/topics/i18n/
-
+# Language and timezone settings
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
-
+# Static files (CSS, JavaScript, Images) URL
 STATIC_URL = '/static/'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
+# Default auto field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
