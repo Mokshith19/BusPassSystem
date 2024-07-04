@@ -14,7 +14,9 @@ from pathlib import Path
 import os
 
 # Define the base directory of the project
+# BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 # Security key for the project
 SECRET_KEY = 'django-insecure-8#+&2)6uc=3_^&02_%5n1#j!q4gv51n0lendox1ljztmfs=*om'
@@ -24,11 +26,12 @@ DEBUG = True
 
 #
 ##
-#ALLOWED_HOSTS = ['10.0.7.26', 'localhost', '127.0.0.1']
+# ALLOWED_HOSTS = ['10.0.0.254', 'localhost', '127.0.0.1']
 ##
 #
 
 # Allowed hosts configuration (empty for development)
+
 ALLOWED_HOSTS = []
 
 # Installed applications for the project
@@ -61,7 +64,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, "templates")],
-        'DIRS': [],
+        # 'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -114,6 +117,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/buspass/profile/'
+
+# Ensure you have this setting
+# LOGOUT_REDIRECT_URL = '/'
+# LOGOUT_REDIRECT_URL = '/accounts/login/'
+# LOGOUT_REDIRECT_URL = '/accounts/logout/'
+# LOGOUT_REDIRECT_URL = '/accounts/logout_passenger/'
+
 
 # Language and timezone settings
 LANGUAGE_CODE = 'en-us'

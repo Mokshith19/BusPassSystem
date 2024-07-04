@@ -7,6 +7,10 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     return render(request, 'index.html')
 
+def logout_passenger(request):
+    return render(request, 'registration/logout.html')
+
+
 # View for user registration
 def register(request):
     if request.method == 'POST':
