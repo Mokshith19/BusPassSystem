@@ -116,7 +116,12 @@ AUTH_PASSWORD_VALIDATORS = [
 #
 
 LOGIN_URL = '/accounts/login/'
+
 LOGIN_REDIRECT_URL = '/buspass/profile/'
+
+# Adding Cookies
+SESSION_COOKIE_AGE = 1209600  # Two weeks, in seconds
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # Set to True if you want the session to expire on browser close
 
 # Ensure you have this setting
 # LOGOUT_REDIRECT_URL = '/'

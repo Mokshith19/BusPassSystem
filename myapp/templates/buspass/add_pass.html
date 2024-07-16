@@ -40,7 +40,15 @@
             background-color: whitesmoke;
             padding: 20px;
         }
-    </style>    
+    </style>
+    <script>
+        window.onload = function() {
+            if (performance.navigation.type === 2) {
+                // Clear form data if the page is loaded via the back button
+                document.querySelector('form').reset();
+            }
+        };
+    </script>
 </head>
 <body>
     <div class="div2">
@@ -49,7 +57,7 @@
     <div class="container">
         <div class="card mb-5">
             <div class="card-body">
-                <form method="post">
+                <form method="post" action="{% url 'add_pass' %}">
                     {% csrf_token %}
                     <div class="card-header mt-2 text-center">
                         <h2>Add Bus Pass Form</h2>

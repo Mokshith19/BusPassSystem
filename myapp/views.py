@@ -3,11 +3,13 @@ from django.contrib.auth import login, authenticate
 from .forms import RegistrationForm, AddPassForm
 from .models import Passenger, Pass, Bus
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout as auth_logout
 
 def index(request):
     return render(request, 'index.html')
 
 def logout_passenger(request):
+    auth_logout(request)
     return render(request, 'registration/logout.html')
 
 

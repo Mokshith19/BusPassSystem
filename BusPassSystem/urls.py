@@ -18,12 +18,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from myapp.views import logout_passenger
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("index/", include("myapp.urls")),
     path('buspass/', include('myapp.urls')),
     # path('verify/', include('myapp.urls')),
+    path('verify/', include('django.contrib.auth.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/logout_passenger/', logout_passenger, name='logout_passenger'),
 ]
 
 # /accounts/login/,
