@@ -12,6 +12,24 @@ def logout_passenger(request):
     auth_logout(request)
     return render(request, 'registration/logout.html')
 
+def pass_verify(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        bus_number = request.POST.get("bus_number")
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            try:
+                bus = Bus.objects.get(bus_number=bus_number)
+                passenger = user.passenger_profile
+                passes = passenger.passes.filter(bus=bus)
+                return render(request, "verify/pass_verify.html", {"passenger": passenger, "passes": passes})
+            except Bus.DoesNotExist:
+                return render(request, "verify/pass_verify.html", {"error": "Invalid bus number"})
+        else:
+            return render(request, "verify/pass_verify.html", {"error": "Invalid username or password"})
+    return render(request, "verify/pass_verify.html")
 
 # View for user registration
 def register(request):
